@@ -28,6 +28,7 @@ function SelectChoice() {
                     />
                 ))}
             </div>
+            <button className='next'>Next page</button>
         </div>
     )
 }

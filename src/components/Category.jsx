@@ -1,8 +1,12 @@
-function Category({ name }) {
+function Category({ name, bgColor, showIcon }) {
     return (
-        <div className="category">
+        <div className="category" style={{ backgroundColor: bgColor }}>
             <p>{name}</p>
-            <span>X</span>
+            {
+                showIcon && (
+                    <span>X</span>
+                )
+            }
         </div>
     )
 }

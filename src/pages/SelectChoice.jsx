@@ -1,9 +1,8 @@
-import info from '../assets/info.png'
 import '../styles/SelectChoice.css'
-import Category from '../components/Category'
+// import Category from '../components/Category'
 import Card from '../components/Card'
 import cardData from '../helper/movieCard'
-
+// import SelectError from '../components/SelectError'
 function SelectChoice() {
     return (
         <div className="selectPage">
@@ -11,12 +10,8 @@ function SelectChoice() {
                 <h2>Super app</h2>
                 <h1>Choose your entertainment catagory</h1>
                 <div className="categoryList">
-                    <Category name={"Romance"} />
+                    {/* <Category bgColor={"#085c00"} name={"Action"} showIcon={true} /> */}
                 </div>
-                <span className="selectError">
-                    <img src={info} alt="info" width={20} />
-                    Minimum 3 category required
-                </span>
             </div>
             <div className="leftDiv">
                 {cardData.map((card, index) => (

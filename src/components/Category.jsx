@@ -1,10 +1,10 @@
-function Category({ name, bgColor, showIcon }) {
+function Category({ name, bgColor, showIcon, onClick }) {
     return (
         <div className="category" style={{ backgroundColor: bgColor }}>
             <p>{name}</p>
             {
                 showIcon && (
-                    <span>X</span>
+                    <span onClick={onClick}>X</span>
                 )
             }
         </div>

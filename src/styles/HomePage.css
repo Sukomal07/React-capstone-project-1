@@ -128,7 +128,7 @@
   height: 300px;
   border-radius: 15px 15px 0px 0px;
 }
-.titleDiv {
+.titleContainer {
   position: absolute;
   bottom: 0;
   display: flex;
@@ -147,4 +147,9 @@
   font-size: 20px;
   word-spacing: 5px;
   line-height: 30px;
+}
+.loading {
+  text-align: center;
+  color: white;
+  font-size: 20px;
 }

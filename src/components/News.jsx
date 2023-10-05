@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react";
+import newsImage from '../assets/newsImage.png'
 
 function News() {
     const apiKey = import.meta.env.VITE_API_KEY
@@ -9,10 +10,7 @@ function News() {
     async function handleData() {
         try {
             const res = await axios.get(api)
-            const newsWithImages = res.data.results.filter(
-                (article) => article.image_url
-            );
-            setNews(newsWithImages[0]);
+            setNews(res.data.results[0]);
         } catch (error) {
             console.error("Error fetching data:", error);
         }
@@ -35,18 +33,30 @@ function News() {
     }
     return (
         <div className="newsContainer">
-            <div className="news">
-                <div className="imageContainer">
-                    <img src={news?.image_url} alt="photo" />
-                    <div className="titleDiv">
-                        <p>{news?.title}</p>
-                        <span>{formatDateAndTime(news?.pubDate)}</span>
+            {
+                news ? (
+                    <div className="news">
+                        <div className="imageContainer">
+                            {
+                                news?.image_url ? (
+                                    <img src={news?.image_url} alt="photo" />
+                                ) : (
+                                    <img src={newsImage} alt="photo" />
+                                )
+                            }
+                            <div className="titleContainer">
+                                <p>{news?.title}</p>
+                                <span>{formatDateAndTime(news?.pubDate)}</span>
+                            </div>
+                        </div>
+                        <div className="content">
+                            <p>{news?.content}</p>
+                        </div>
                     </div>
-                </div>
-                <div className="content">
-                    <p>{news?.content}</p>
-                </div>
-            </div>
+                ) : (
+                    <p className="loading">Loading...</p>
+                )
+            }
         </div>
     )
 }

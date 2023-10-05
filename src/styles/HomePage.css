@@ -69,24 +69,30 @@
   gap: 2rem;
   border-radius: 15px;
   font-family: "Roboto", sans-serif;
-  overflow-y: auto;
   width: 350px;
   max-width: 350px;
   max-height: 440px;
   padding: 1rem 2rem;
   cursor: pointer;
 }
-.notes > div {
+.notes > .heading {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.notes > div > h1 {
+.notes > .heading > h1 {
   font-weight: 500;
 }
-.notes > p {
+.notesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-y: auto;
+}
+.notesContainer > p {
   word-spacing: 5px;
+  color: black;
 }
 #note {
   background-color: transparent;
@@ -97,11 +103,48 @@
   width: 100%;
   overflow-y: auto;
   border: none;
+  resize: none;
+}
+.newsContainer {
+  width: 30%;
+  border-radius: 15px;
+  overflow-y: auto;
+  height: 100%;
 }
 .news {
-  width: 30%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  height: fit-content;
+  background-color: white;
 }
-.news > img {
+.imageContainer {
+  position: relative;
+  color: white;
+  height: 300px;
+}
+.imageContainer > img {
   width: 100%;
-  height: 100%;
+  height: 300px;
+  border-radius: 15px 15px 0px 0px;
+}
+.titleDiv {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  background-color: #0000009e;
+  padding: 1rem 2rem;
+  font-size: 20px;
+  word-spacing: 2px;
+}
+.content {
+  padding: 1rem 2rem;
+}
+.content > p {
+  font-size: 20px;
+  word-spacing: 5px;
+  line-height: 30px;
 }

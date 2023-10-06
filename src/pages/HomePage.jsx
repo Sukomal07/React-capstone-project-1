@@ -1,9 +1,9 @@
 import '../styles/HomePage.css'
 import Profile from '../components/Profile'
 import timer from '../assets/timer.png'
-import weather from '../assets/weather.png'
 import Notes from '../components/Notes'
 import News from '../components/News'
+import Weather from '../components/Weather'
 
 function HomePage() {
     return (
@@ -12,7 +12,7 @@ function HomePage() {
                 <div className='firstPart'>
                     <div className='secondPart'>
                         <Profile />
-                        <img src={weather} alt="" />
+                        <Weather />
                     </div>
                     <Notes />
                 </div>

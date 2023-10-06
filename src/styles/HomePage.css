@@ -153,3 +153,43 @@
   color: white;
   font-size: 20px;
 }
+.weather {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  height: 100%;
+  background-color: #101744;
+}
+.dateContainer {
+  padding: 0rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: #ff4ade;
+  color: white;
+  font-size: 30px;
+  height: 35%;
+  border-radius: 15px 15px 0 0;
+  align-items: center;
+}
+.weatherData {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 0 2rem;
+  height: 65%;
+}
+.firstContainer,
+.secondContainer,
+.thirdContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pressureDiv,
+.windDiv,
+.humidityDiv {
+  display: flex;
+  align-items: center;
+}

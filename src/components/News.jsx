@@ -1,11 +1,10 @@
 import axios from "axios"
 import { useEffect, useState } from "react";
-import newsImage from '../assets/newsImage.png'
 
 function News() {
     const apiKey = import.meta.env.VITE_API_KEY
     const [news, setNews] = useState(null)
-    const api = `https://newsdata.io/api/1/news?apikey=${apiKey}&language=en`
+    const api = `https://newsdata.io/api/1/news?apikey=${apiKey}&image=1&language=en&country=in`
 
     async function handleData() {
         try {
@@ -37,13 +36,7 @@ function News() {
                 news ? (
                     <div className="news">
                         <div className="imageContainer">
-                            {
-                                news?.image_url ? (
-                                    <img src={news?.image_url} alt="photo" />
-                                ) : (
-                                    <img src={newsImage} alt="photo" />
-                                )
-                            }
+                            <img src={news?.image_url} alt="photo" />
                             <div className="titleContainer">
                                 <p>{news?.title}</p>
                                 <span>{formatDateAndTime(news?.pubDate)}</span>

@@ -10,15 +10,15 @@ function App() {
   const isLoggedIn = localStorage.getItem('isLoggedIn');
   const navigate = useNavigate();
   const location = useLocation();
-  function checkRoute() {
-    if (!isLoggedIn && location.pathname === '/') {
-      navigate('/signup')
-    }
-  }
 
   useEffect(() => {
-    checkRoute()
-  }, [])
+    if (!isLoggedIn && (location.pathname === '/' || location.pathname === '/select' || location.pathname === '/movie')) {
+      navigate('/signup')
+    }
+    if (isLoggedIn && location.pathname === '/signup') {
+      navigate('/')
+    }
+  }, [isLoggedIn, location.pathname, navigate])
   return (
     <>
       <Routes>

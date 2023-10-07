@@ -9,13 +9,13 @@ function Profile() {
             <img src={profileImage} alt="profile image" className='image' />
             <div className='profileDetails'>
                 <div className='information'>
-                    <p>{userData.name}</p>
-                    <p>{userData.email}</p>
-                    <p className='username'>{userData.username}</p>
+                    <p>{userData?.name}</p>
+                    <p>{userData?.email}</p>
+                    <p className='username'>{userData?.username}</p>
                 </div>
                 <div className='categoryList'>
                     {
-                        choices && choices.map((choice, index) => (
+                        choices && choices?.map((choice, index) => (
                             <Category key={index} bgColor={'#9F94FF'} name={choice} showIcon={false} />
                         ))
                     }

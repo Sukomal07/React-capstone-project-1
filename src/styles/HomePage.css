@@ -174,11 +174,25 @@
 }
 .weatherData {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
   color: white;
   padding: 0 2rem;
   height: 65%;
+  align-items: center;
+  gap: 1rem;
+}
+.firstContainer {
+  width: 20%;
+}
+.weatherType {
+  font-size: 25px;
+}
+.secondContainer {
+  width: 30%;
+}
+.thirdContainer {
+  width: 30%;
+  gap: 0.5rem;
 }
 .firstContainer,
 .secondContainer,
@@ -192,4 +206,32 @@
 .humidityDiv {
   display: flex;
   align-items: center;
+  gap: 1rem;
+}
+.bar {
+  border-left: 2px solid white;
+  width: 0px;
+  height: 50%;
+}
+.temp {
+  font-size: 40px;
+}
+.pressureIcon {
+  width: 15px;
+}
+.windIcon {
+  width: 30px;
+}
+.humidityIcon {
+  width: 20px;
+}
+.humidity {
+  font-size: 20px;
+}
+.error {
+  font-size: 20px;
+  color: red;
+}
+.windSpeed {
+  font-size: 20px;
 }

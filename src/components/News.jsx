@@ -9,7 +9,7 @@ function News() {
     async function handleData() {
         try {
             const res = await axios.get(api)
-            setNews(res.data.results[0]);
+            setNews(res.data.results[1]);
         } catch (error) {
             console.error("Error fetching data:", error);
         }

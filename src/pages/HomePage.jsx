@@ -4,8 +4,10 @@ import timer from '../assets/timer.png'
 import Notes from '../components/Notes'
 import News from '../components/News'
 import Weather from '../components/Weather'
+import { useNavigate } from 'react-router-dom'
 
 function HomePage() {
+    const navigate = useNavigate()
     return (
         <div className="homepage">
             <div className="left">
@@ -21,6 +23,7 @@ function HomePage() {
                 </div>
             </div>
             <News />
+            <button className='browse' onClick={() => navigate('/movie')}>Browse</button>
         </div>
     )
 }

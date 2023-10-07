@@ -57,6 +57,7 @@ function SelectChoice() {
                         image={card.imageUrl}
                         bgColor={card.bgColor}
                         onClick={() => handleCardClick(card.name)}
+                        isSelected={choices.includes(card.name)}
                     />
                 ))}
             </div>

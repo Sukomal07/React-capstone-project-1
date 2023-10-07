@@ -4,6 +4,7 @@ import SelectChoice from "./pages/SelectChoice"
 import HomePage from "./pages/HomePage"
 import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
+import MoviePage from "./pages/MoviePage"
 
 function App() {
   const isLoggedIn = localStorage.getItem('isLoggedIn');
@@ -24,6 +25,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/select" element={<SelectChoice />} />
+        <Route path="/movie" element={<MoviePage />} />
       </Routes>
     </>
   )

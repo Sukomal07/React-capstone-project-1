@@ -1,0 +1,98 @@
+.container {
+  padding: 0 2rem;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+.title {
+  text-decoration: none;
+  color: #72db73;
+  font-family: "Single Day", cursive;
+  font-size: 25px;
+}
+.header > img {
+  width: 60px;
+}
+.movieContainer {
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.movieContainer > p {
+  color: white;
+  font-size: 20px;
+  font-family: "Single Day", cursive;
+}
+.movieCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+}
+.movieType {
+  color: #878787;
+}
+.imagesDiv {
+  display: flex;
+  gap: 1rem;
+  overflow: hidden;
+}
+.posterDiv {
+  margin-bottom: 20px;
+}
+.posterDiv > img {
+  width: 250px;
+  height: 170px;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.posterDiv > img:hover {
+  transform: scale(1.05);
+}
+.leftBtn {
+  position: absolute;
+  top: 50%;
+  left: -2%;
+  z-index: 10;
+  padding: 10px;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+  font-size: 25px;
+  width: 50px;
+  height: 50px;
+  color: #d30d0d;
+  background-color: #ffffff24;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.rightBtn {
+  position: absolute;
+  top: 50%;
+  right: -2%;
+  z-index: 10;
+  padding: 10px;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+  font-size: 25px;
+  width: 50px;
+  height: 50px;
+  color: #d30d0d;
+  background-color: #ffffff24;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.leftBtn,
+.rightBtn:hover {
+  transform: scale(1.05);
+}

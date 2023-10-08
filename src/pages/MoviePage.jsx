@@ -13,7 +13,7 @@ function MoviePage() {
             </div>
             <div className="movieContainer">
                 <p>Entertainment according to your choice</p>
-                {category.map((element, index) => {
+                {category?.map((element, index) => {
                     const cardItem = cardData.find(item => item.name === element);
                     if (cardItem) {
                         return <MovieCard key={index} genre={element} id={cardItem.id} />;

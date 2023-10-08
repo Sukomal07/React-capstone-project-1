@@ -4,7 +4,7 @@
   display: flex;
   height: 100vh;
   width: 100%;
-  padding: 4rem;
+  padding: 2rem 4rem;
   gap: 2rem;
 }
 .rightDiv {
@@ -59,14 +59,14 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
+  height: 85%;
 }
 .cardDiv {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   padding: 15px 10px;
   color: #ffffff;
-  height: fit-content;
   border-radius: 15px;
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -84,8 +84,8 @@
 }
 .next {
   position: absolute;
-  bottom: 3%;
-  right: 8%;
+  bottom: 5%;
+  right: 10%;
   cursor: pointer;
   border: none;
   outline: none;

@@ -1,10 +1,10 @@
 import '../styles/HomePage.css'
 import Profile from '../components/Profile'
-import timer from '../assets/timer.png'
 import Notes from '../components/Notes'
 import News from '../components/News'
 import Weather from '../components/Weather'
 import { useNavigate } from 'react-router-dom'
+import Timer from '../components/Timer'
 
 function HomePage() {
     const navigate = useNavigate()
@@ -19,7 +19,7 @@ function HomePage() {
                     <Notes />
                 </div>
                 <div className='timer'>
-                    <img src={timer} alt="" />
+                    <Timer />
                 </div>
             </div>
             <News />

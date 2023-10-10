@@ -7,7 +7,7 @@
   width: 100%;
 }
 .left {
-  width: 75%;
+  width: 70%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -17,21 +17,20 @@
 .firstPart {
   display: flex;
   justify-content: space-between;
-  height: 70%;
+  height: 65%;
   width: 100%;
   gap: 2rem;
 }
 .timer {
-  height: 30%;
+  height: 35%;
+  background-color: #1e2343;
+  border-radius: 15px;
 }
-.timer > img {
-  height: 100%;
-  width: 100%;
-}
+
 .secondPart {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   min-width: 55%;
 }
 .profile {
@@ -43,7 +42,7 @@
   gap: 3rem;
 }
 .profile > img {
-  width: 100px;
+  width: 80px;
   height: 100%;
 }
 .profileDetails {
@@ -108,7 +107,7 @@
   resize: none;
 }
 .newsContainer {
-  width: 25%;
+  width: 30%;
   border-radius: 15px;
   overflow-y: auto;
   height: 90%;
@@ -170,7 +169,7 @@
   background-color: #ff4ade;
   color: white;
   font-size: 30px;
-  height: 35%;
+  height: 30%;
   border-radius: 15px 15px 0 0;
   align-items: center;
 }
@@ -179,11 +178,11 @@
   justify-content: space-around;
   color: white;
   padding: 0 2rem;
-  height: 65%;
+  height: 70%;
   align-items: center;
 }
 .weatherType {
-  font-size: 25px;
+  font-size: 20px;
 }
 .thirdContainer {
   gap: 0.5rem;
@@ -194,6 +193,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 10px;
 }
 .pressureDiv,
 .windDiv,
@@ -244,4 +244,92 @@
   border-radius: 20px;
   font-size: 17px;
   cursor: pointer;
+}
+
+.timerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+}
+.clock {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+.timerDetails {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  justify-content: space-between;
+  color: white;
+  padding: 1rem 5rem;
+}
+.lowerDiv {
+  width: 100%;
+}
+.lowerDiv .btn {
+  width: 100%;
+  border: none;
+  background-color: #ff6a6a;
+  padding: 7px;
+  color: white;
+  font-size: 16px;
+  outline: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.timerInputs {
+  display: flex;
+  justify-content: space-between;
+}
+.displayContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+.timeHeading {
+  color: #949494;
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+}
+.timerbuttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.timerbuttons > p {
+  font-size: 40px;
+}
+.incBtn {
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid #949494;
+  cursor: pointer;
+}
+.decBtn {
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid #949494;
+  cursor: pointer;
+}
+.outerDiv {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #191e39;
+  box-shadow: inset 0px 0px 10px 10px rgba(0, 0, 0, 0.2);
+}
+.time {
+  font-weight: bold;
+  font-size: 30px;
+  color: white;
+  font-family: "Roboto", sans-serif;
 }

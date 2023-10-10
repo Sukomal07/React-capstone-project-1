@@ -176,24 +176,16 @@
 }
 .weatherData {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   color: white;
   padding: 0 2rem;
   height: 65%;
   align-items: center;
-  gap: 1rem;
-}
-.firstContainer {
-  width: 20%;
 }
 .weatherType {
   font-size: 25px;
 }
-.secondContainer {
-  width: 30%;
-}
 .thirdContainer {
-  width: 30%;
   gap: 0.5rem;
 }
 .firstContainer,
@@ -213,13 +205,16 @@
 .bar {
   border-left: 2px solid white;
   width: 0px;
-  height: 50%;
+  height: 30%;
 }
 .temp {
   font-size: 40px;
 }
 .pressureIcon {
   width: 15px;
+}
+.pressure {
+  font-size: 17px;
 }
 .windIcon {
   width: 30px;

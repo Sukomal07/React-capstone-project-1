@@ -14,7 +14,7 @@ function Weather() {
     const getUserIpAddress = async () => {
         try {
             const response = await axios.get(ipApi);
-            setUserIpAddress(response.data);
+            setUserIpAddress(response?.data);
         } catch (error) {
             console.error("Error fetching IP address:", error);
         }
@@ -25,7 +25,7 @@ function Weather() {
             const api = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${userIpAddress}`;
             try {
                 const response = await axios.get(api);
-                setData(response.data.current);
+                setData(response.data?.current);
             } catch (error) {
                 console.error("Error fetching weather data:", error);
             }

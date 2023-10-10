@@ -5,45 +5,47 @@ import windIcon from '../assets/windIcon.png'
 import humidityIcon from '../assets/humidityIcon.png'
 
 function Weather() {
-    const apiKey = import.meta.env.VITE_OPENAPI_KEY
-    const [data, setData] = useState({
-        weatherData: null,
-        error: ''
-    })
-    const [currentDateTime, setCurrentDateTime] = useState(new Date())
-    const fetchWeatherData = () => {
-        if ("geolocation" in navigator) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    const { latitude, longitude } = position.coords;
-                    const api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
-                    axios.get(api)
-                        .then((response) => {
-                            setData({ ...data, weatherData: response.data });
-                        })
-                        .catch((error) => {
-                            setData({ ...data, error: error.message });
-                        });
-                },
-                (error) => {
-                    setData({ ...data, error: error.message });
-                }
-            );
-        } else {
-            setData({ ...data, error: "Geolocation is not available in this browser." });
+    const apiKey = import.meta.env.VITE_WEATHERAPI_KEY;
+    const ipApi = import.meta.env.VITE_IP_API;
+    const [data, setData] = useState(null);
+    const [currentDateTime, setCurrentDateTime] = useState(new Date());
+    const [userIpAddress, setUserIpAddress] = useState("");
+
+    const getUserIpAddress = async () => {
+        try {
+            const response = await axios.get(ipApi);
+            setUserIpAddress(response.data);
+        } catch (error) {
+            console.error("Error fetching IP address:", error);
         }
     };
+
+    const fetchWeatherData = async () => {
+        if (userIpAddress) {
+            const api = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${userIpAddress}`;
+            try {
+                const response = await axios.get(api);
+                setData(response.data.current);
+            } catch (error) {
+                console.error("Error fetching weather data:", error);
+            }
+        }
+    };
+
     useEffect(() => {
-        fetchWeatherData();
+        getUserIpAddress();
         const intervalId = setInterval(() => {
             setCurrentDateTime(new Date());
         }, 1000);
+
+        if (userIpAddress) {
+            fetchWeatherData();
+        }
+
         return () => {
             clearInterval(intervalId);
         };
-    }, [])
-
-    const weatherIcon = `https://openweathermap.org/img/wn/${data.weatherData?.weather[0].icon}.png`
+    }, [userIpAddress]);
     return (
         <div className="weather">
             <div className="dateContainer">
@@ -59,39 +61,37 @@ function Weather() {
                 })}</p>
             </div>
             <div className="weatherData">
-                {data.error ? (
-                    <p className="error">{data.error}</p>
-                ) : (
-                    <>
-                        <div className="firstContainer">
-                            <img src={weatherIcon} alt="icon" className="icon" />
-                            <p className="weatherType">{data.weatherData?.weather[0].main}</p>
-                        </div>
-                        <span className="bar"></span>
-                        <div className="secondContainer">
-                            {
-                                data.weatherData?.main?.temp && (
-                                    <p className="temp">{Math.round(data.weatherData?.main?.temp - 273.15)}°C</p>
-                                )
-                            }
-                            <div className="pressureDiv">
-                                <img src={pressureIcon} alt="pressure" className="pressureIcon" />
-                                <p className="pressure">{data.weatherData?.main?.pressure} mbar Pressure</p>
+                {
+                    data ? (
+                        <>
+                            <div className="firstContainer">
+                                <img src={data?.condition?.icon} alt="icon" className="icon" />
+                                <p className="weatherType">{data?.condition?.text}</p>
                             </div>
-                        </div>
-                        <span className="bar"></span>
-                        <div className="thirdContainer">
-                            <div className="windDiv">
-                                <img src={windIcon} alt="wind" className="windIcon" />
-                                <p className="windSpeed">{data.weatherData?.wind?.speed}Km/h Wind</p>
+                            <span className="bar"></span>
+                            <div className="secondContainer">
+                                <p className="temp">{data?.temp_c} °C</p>
+                                <div className="pressureDiv">
+                                    <img src={pressureIcon} alt="pressure" className="pressureIcon" />
+                                    <p className="pressure">{data?.pressure_mb} mbar <br />Pressure</p>
+                                </div>
                             </div>
-                            <div className="humidityDiv">
-                                <img src={humidityIcon} alt="humidity" className="humidityIcon" />
-                                <p className="humidity">{data.weatherData?.main?.humidity}%  Humidity </p>
+                            <span className="bar"></span>
+                            <div className="thirdContainer">
+                                <div className="windDiv">
+                                    <img src={windIcon} alt="wind" className="windIcon" />
+                                    <p className="windSpeed">{data?.wind_kph} Km/h <br />Wind</p>
+                                </div>
+                                <div className="humidityDiv">
+                                    <img src={humidityIcon} alt="humidity" className="humidityIcon" />
+                                    <p className="humidity">{data?.humidity}%  <br />Humidity </p>
+                                </div>
                             </div>
-                        </div>
-                    </>
-                )}
+                        </>
+                    ) : (
+                        <p className="error">Loading...</p>
+                    )
+                }
             </div>
         </div>
     )

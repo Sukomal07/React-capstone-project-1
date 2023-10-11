@@ -22,27 +22,13 @@ function MovieCard({ id, genre }) {
     useEffect(() => {
         fetchData();
     }, []);
-
-    const scrollLeft = () => {
-        if (imagesDivRef.current) {
-            imagesDivRef.current.scrollLeft -= 250;
-        }
-    };
-
-    const scrollRight = () => {
-        if (imagesDivRef.current) {
-            imagesDivRef.current.scrollLeft += 250;
-        }
-    };
-
+    const displayedImages = movieData.images.slice(0, 4);
     return (
         <div className="movieCard">
             <h1 className="movieType">{movieData.name}</h1>
-            <button onClick={scrollRight} className="rightBtn">{">"}</button>
-            <button onClick={scrollLeft} className="leftBtn">{"<"}</button>
             <div className="imagesDiv" ref={imagesDivRef}>
-                {movieData.images.length > 0 &&
-                    movieData.images.map((image, index) => (
+                {displayedImages.length > 0 &&
+                    displayedImages.map((image, index) => (
                         <div key={index} className="posterDiv">
                             <img src={image} alt="movie" className="movieImage" />
                         </div>

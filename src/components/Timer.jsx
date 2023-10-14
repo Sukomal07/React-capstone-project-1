@@ -1,22 +1,15 @@
 import { useState } from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
+import audio from '../assets/tune.mp3';
 
 function Timer() {
+    const finishAudio = new Audio(audio);
     const [isPlaying, setIsPlaying] = useState(false);
     const [data, setData] = useState({
         hour: 0,
         minute: 0,
         second: 0
     });
-    const onComplete = () => {
-        setIsPlaying(false)
-        setData({
-            hour: 0,
-            minute: 0,
-            second: 0
-        })
-    }
-
     const increment = (type) => {
         if (!isPlaying) {
             setData((prevData) => ({
@@ -36,23 +29,41 @@ function Timer() {
     };
     const totalSeconds = data.hour * 3600 + data.minute * 60 + data.second;
 
+    const startTimer = () => {
+        if (totalSeconds > 0) {
+            setIsPlaying(!isPlaying);
+        }
+    }
+    const updateTimer = () => {
+        setIsPlaying(false)
+        setData({
+            hour: 0,
+            minute: 0,
+            second: 0
+        })
+    }
     return (
         <div className="timerContainer">
             <div className="clock">
                 <div className="outerDiv">
                     <CountdownCircleTimer
+                        key={totalSeconds}
                         isPlaying={isPlaying}
                         duration={totalSeconds}
                         colors={"#FF6A6A"}
-                        strokeWidth={5}
+                        strokeWidth={isPlaying ? 5 : 0}
                         trailColor="transparent"
                         size={150}
-                        onComplete={onComplete}
+                        onComplete={() => (
+                            finishAudio.play(),
+                            updateTimer()
+                        )}
                     >
                         {({ remainingTime }) => {
-                            const hours = Math.floor(remainingTime / 3600);
-                            const minutes = Math.floor((remainingTime % 3600) / 60);
-                            const seconds = remainingTime % 60;
+                            const displayTime = remainingTime > 0 ? remainingTime : 0;
+                            const hours = Math.floor(displayTime / 3600);
+                            const minutes = Math.floor((displayTime % 3600) / 60);
+                            const seconds = displayTime % 60;
                             const formattedHours = String(hours).padStart(2, "0");
                             const formattedMinutes = String(minutes).padStart(2, "0");
                             const formattedSeconds = String(seconds).padStart(2, "0");
@@ -93,9 +104,15 @@ function Timer() {
                     </div>
                 </div>
                 <div className="lowerDiv">
-                    <button className="btn" onClick={() => setIsPlaying(!isPlaying)}>
-                        {isPlaying ? "Stop" : "Start"}
-                    </button>
+                    {
+                        isPlaying ? (
+                            <button className="btn" onClick={() => updateTimer()}>Stop</button>
+                        ) : (
+                            <button className="btn" onClick={() => startTimer()}>
+                                Start
+                            </button>
+                        )
+                    }
                 </div>
             </div>
         </div>

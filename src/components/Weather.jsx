@@ -22,7 +22,7 @@ function Weather() {
 
     const fetchWeatherData = async () => {
         if (userIpAddress) {
-            const api = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${userIpAddress}`;
+            const api = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${userIpAddress}`;
             try {
                 const response = await axios.get(api);
                 setData(response.data?.current);
